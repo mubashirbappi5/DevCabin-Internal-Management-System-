@@ -55,7 +55,7 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold"><img className='w-32 mx-auto' src="/public/WhatsApp_Image_2025-07-20_at_15.04.23_c9a69d31-removebg-preview (1).png" alt="" /></CardTitle>
+          <CardTitle className="text-2xl font-bold"><img className='w-32 mx-auto' src="/WhatsApp_Image_2025-07-20_at_15.04.23_c9a69d31-removebg-preview (1).png" alt="" /></CardTitle>
           <CardDescription>Internal Management System</CardDescription>
         </CardHeader>
         <CardContent>
