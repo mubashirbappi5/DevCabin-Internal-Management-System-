@@ -28,7 +28,7 @@ const Attendance = () => {
 
     try {
       const today = new Date().toISOString().split('T')[0];
-      
+
       const { data, error } = await supabase
         .from('daily_attendance')
         .select('*')
@@ -37,7 +37,7 @@ const Attendance = () => {
         .maybeSingle();
 
       if (error) throw error;
-      
+
       setTodayAttendance(data as TodayAttendance);
     } catch (error) {
       console.error('Error fetching today attendance:', error);
@@ -46,13 +46,13 @@ const Attendance = () => {
     }
   };
 
-  useEffect(() => {
-    fetchTodayAttendance();
-  }, [profile?.id]);
-
   const handleAttendanceUpdate = () => {
     fetchTodayAttendance();
   };
+
+  useEffect(() => {
+    fetchTodayAttendance();
+  }, [profile?.id]);
 
   if (loading) {
     return (
@@ -74,21 +74,14 @@ const Attendance = () => {
       </div>
 
       <div className="space-y-6">
-        {/* Team Overview - Only visible to admins/PMs */}
         <TeamAttendanceOverview />
-        
-        {/* Admin Monthly Stats - Only visible to admins/PMs */}
         <AdminMonthlyStats />
-        
-        {/* Admin Attendance Manager - Only visible to admins/PMs */}
         <AdminAttendanceManager />
-        
-        {/* Admin Leave Manager - Only visible to admins/PMs */}
         <AdminLeaveManager />
-        
+
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="space-y-6">
-            <AttendanceCard 
+            <AttendanceCard
               todayAttendance={todayAttendance}
               onAttendanceUpdate={handleAttendanceUpdate}
             />
