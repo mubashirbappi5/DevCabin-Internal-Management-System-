@@ -163,7 +163,7 @@ export default function WorkSubmissions() {
     try {
       setUploadingFile(true);
       const fileExt = file.name.split('.').pop();
-      const fileName = `${profile?.id}/${Date.now()}.${fileExt}`;
+      const fileName = `${profile?.user_id}/${Date.now()}.${fileExt}`;
       
       const { error } = await supabase.storage
         .from('work-screenshots')
@@ -227,6 +227,7 @@ export default function WorkSubmissions() {
         screenshot_url: screenshotUrl,
         project_id: formData.project_id || null,
         task_id: formData.task_id || null,
+        submitted_by: profile.id,
       };
 
       // Only set submitted_by for updates, let the database trigger handle it for new submissions
